@@ -1,0 +1,205 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3083625160660406868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7917286231586558063}
+  - component: {fileID: 4112696051152474688}
+  m_Layer: 3
+  m_Name: Shapes (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7917286231586558063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3083625160660406868}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 1.6, z: 1.27}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 697786640927748140}
+  - {fileID: 8842904848407617201}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4112696051152474688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3083625160660406868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20055cca4f5ccc498246b0632083fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubes:
+  - {fileID: 1902871128570780740}
+  - {fileID: 7601827056550572761}
+--- !u!1001 &6045865826340196
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7917286231586558063}
+    m_Modifications:
+    - target: {fileID: 3794929048007322789, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_Name
+      value: Cube (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794929048007322789, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+--- !u!114 &7601827056550572761 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7595997797209751485, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+  m_PrefabInstance: {fileID: 6045865826340196}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52c14275d7ae89c428392967857cfb75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &8842904848407617201 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+  m_PrefabInstance: {fileID: 6045865826340196}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8287253291417003001
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7917286231586558063}
+    m_Modifications:
+    - target: {fileID: 3794929048007322789, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_Name
+      value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794929048007322789, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+--- !u!4 &697786640927748140 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8839780696363504597, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+  m_PrefabInstance: {fileID: 8287253291417003001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1902871128570780740 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7595997797209751485, guid: dc18024a04118af4eac8d8aa58b5d47b, type: 3}
+  m_PrefabInstance: {fileID: 8287253291417003001}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52c14275d7ae89c428392967857cfb75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
