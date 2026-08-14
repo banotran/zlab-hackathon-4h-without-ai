@@ -36,9 +36,7 @@ namespace Game.Manager
         private void Start()
         {
             _towerBuilder.BuildTower();
-            _currentFloor = _towerBuilder.Floors.Count - 1;
-            if (_cameraFollow != null) _cameraFollow.SnapToFloor(_currentFloor);
-            SpawnOptions();
+
         }
 
         private void Update()
@@ -46,8 +44,24 @@ namespace Game.Manager
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 _towerBuilder.BuildTower();
-                SpawnOptions();
             }
+        }
+
+        private void OnEnable()
+        {
+            _towerBuilder.OnTowerBuilded += WarmUp;
+        }
+
+        private void OnDisable()
+        {
+            _towerBuilder.OnTowerBuilded -= WarmUp;
+        }
+
+        private void WarmUp()
+        {
+            _currentFloor = _towerBuilder.Floors.Count - 1;
+            if (_cameraFollow != null) _cameraFollow.SnapToFloor(_currentFloor);
+            SpawnOptions();
         }
         #endregion
 
@@ -90,7 +104,7 @@ namespace Game.Manager
             {
                 if (o != null)
                 {
-                    o.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+                    o.transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBack).OnComplete(() =>
                     {
                         Destroy(o.gameObject);
                     });

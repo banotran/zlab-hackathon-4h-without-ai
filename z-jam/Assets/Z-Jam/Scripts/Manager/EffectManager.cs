@@ -7,6 +7,8 @@ namespace Game.Manager
 {
     public class EffectManager : MonoSingleton<EffectManager>
     {
+        [Header("Ref")]
+        [SerializeField] private ColorDatabase _colorDb;
         [SerializeField] private ParticleSystem _cubeBlastParticle;
         [SerializeField] private int _poolSize = 40;
         [SerializeField] private Transform _container;
@@ -34,6 +36,8 @@ namespace Game.Manager
         public ParticleSystem PlayBlastParticle(Vector3 pos, Color color)
         {
             ParticleSystem p = _blastEffectPool.Count > 0 ? _blastEffectPool.Dequeue() : CreateNewPar();
+            var m = p.main;
+            m.startColor = color;
             p.transform.position = pos;
             p.gameObject.SetActive(true);
             p.Play();

@@ -1,6 +1,9 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Game.Manager;
+using Unity.Collections;
 using UnityEngine;
 
 namespace Game.Core
@@ -33,6 +36,8 @@ namespace Game.Core
         public float Spacing => _spacing;
         public float Height => _floorHeight;
 
+        public event Action OnTowerBuilded;
+
 
         #region Tower
         /// <summary>
@@ -46,11 +51,26 @@ namespace Game.Core
                 Destroy(child.gameObject);
             }
 
+            // for (int i = 0; i < _floorCount; i++)
+            // {
+            //     FloorData floor = GenerateFloor(i);
+            //     Floors.Add(floor);
+            // }
+
+            StartCoroutine(CreateTowerRoutine());
+        }
+
+        private IEnumerator CreateTowerRoutine()
+        {
+            yield return null;
             for (int i = 0; i < _floorCount; i++)
             {
                 FloorData floor = GenerateFloor(i);
                 Floors.Add(floor);
+                yield return new WaitForSeconds(0.1f);
             }
+
+            OnTowerBuilded?.Invoke();
         }
 
         /// <summary>
@@ -74,8 +94,8 @@ namespace Game.Core
             
             do
             {
-                key = TetrisShapes.Keys[Random.Range(0, TetrisShapes.Keys.Count)];
-                rot = Random.Range(0, 4);
+                key = TetrisShapes.Keys[UnityEngine.Random.Range(0, TetrisShapes.Keys.Count)];
+                rot = UnityEngine.Random.Range(0, 4);
                 cells = TetrisShapes.Rotate(TetrisShapes.Shapes[key], rot);
                 bounds = TetrisShapes.GetBounds(cells);
             }
@@ -84,10 +104,10 @@ namespace Game.Core
             floor.ShapeKey = key;
             floor.Rotation = rot;
             floor.ColorId = colorId;
-            // int offsetX = Random.Range(_gridSize / 2, _gridSize - bounds.x + 1);
-            // int offsetY = Random.Range(_gridSize / 2, _gridSize - bounds.y + 1);
-            int offsetX = _gridSize / 2;
-            int offsetY = _gridSize / 2;
+            int offsetX = UnityEngine.Random.Range(1, _gridSize - bounds.x + 1);
+            int offsetY = UnityEngine.Random.Range(1, _gridSize - bounds.y + 1);
+            // int offsetX = _gridSize / 2;
+            // int offsetY = _gridSize / 2;
             foreach(var c in cells)
             {
                 floor.HoleCells.Add(new Vector2Int(c.x + offsetX, c.y + offsetY));
@@ -104,12 +124,18 @@ namespace Game.Core
                 for(int y = 0; y < _gridSize; y++)
                 {
                     var pos = new Vector2Int(x, y);
-                    if (floor.HoleCells.Contains(pos)) continue;
+                    if (floor.HoleCells.Contains(pos))
+                    {
+                        floor.Cubes[x, y] = null;
+                        continue;
+                    }
 
                     GameObject cube = Instantiate(_cubePrefab, floorParent.transform);
                     Vector3 cubePos = new Vector3(x * _spacing, 0, y * _spacing);
                     cube.transform.localPosition = cubePos;
-                    cube.transform.DOPunchScale(_breakPunchScale * Vector3.one, _appearPunchDuration).SetEase(Ease.OutBounce);
+                    cube.transform.localScale = Vector3.zero;
+                    cube.transform.DOScale(Vector3.one, _appearPunchDuration).SetEase(Ease.OutQuint);
+                    // cube.transform.DOPunchScale(_breakPunchScale * Vector3.one, _appearPunchDuration).SetEase(Ease.OutBounce);
                     cube.GetComponent<MeshRenderer>().material = _colorDb.GetMatById(colorId);
                     floor.Cubes[x, y] = cube;
                 }
@@ -143,6 +169,7 @@ namespace Game.Core
                 GameObject cube = Instantiate(_cubePrefab, target + Vector3.up * _dropHeight, Quaternion.identity, floorPr);
                 cube.GetComponent<MeshRenderer>().material = _colorDb.GetMatById(floor.ColorId);
                 cube.transform.DOMove(target, _fillDuration).SetEase(Ease.OutBounce);
+                floor.Cubes[c.x, c.y] = cube;
             }
 
             floor.IsCleared = true;
@@ -181,16 +208,16 @@ namespace Game.Core
             int remaining = cubes.Count;
             foreach(var c in cubes)
             {
-                float delay = Random.Range(0f, _disappearDelayTime);
+                float delay = UnityEngine.Random.Range(0f, _disappearDelayTime);
                 Sequence s = DOTween.Sequence();
 
                 s.AppendInterval(delay);
                 s.Append(c.transform.DOScale(Vector3.zero, _disappearDuration).SetEase(Ease.InBack));
 
-                // if (c.TryGetComponent<MeshRenderer>(out var r) && r.material.HasProperty("_Color"))
-                // {
-                //     s.Join(r.material.DOFade(0f, _disappearDuration));
-                // }
+                if (c.TryGetComponent<MeshRenderer>(out var r) && r.material.HasProperty("_Color"))
+                {
+                    s.Join(r.material.DOFade(0f, _disappearDuration));
+                }
 
                 s.OnComplete(() =>
                 {
@@ -198,6 +225,7 @@ namespace Game.Core
                     Destroy(c);
                     remaining--;
                     if (remaining <= 0) OnCompleted?.Invoke();
+                    
                 });
             }
 
